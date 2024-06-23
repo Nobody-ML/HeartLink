@@ -22,6 +22,8 @@ from config import prompt_text, prompt_language, text_language, ref_wav_path
 from TTS.GPT_SoVITS.tts import get_tts_wav, load_tts_model
 from TTS.GPT_SoVITS.feature_extractor import cnhubert
 from modelscope.hub.api import HubApi
+
+os.system("mv /home/xlab-app-center/HeartLink/nltk_data /home/xlab-app-center")
 api = HubApi()
 api.login('3495b435-5eb0-41c8-89eb-254c8c971b4e')
 
