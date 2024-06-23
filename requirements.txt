@@ -27,4 +27,4 @@ LangSegment>=0.2.0
 Faster_Whisper
 wordsegment
 lmdeploy
-streamlit==1.32.0
+streamlit==1.35.0
