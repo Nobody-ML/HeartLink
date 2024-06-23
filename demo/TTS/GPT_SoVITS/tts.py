@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/xlab-app-center/HeartLink/demo/TTS/GPT_SoVITS/')
+# sys.path.append('/home/xlab-app-center/HeartLink/demo/TTS/GPT_SoVITS/')
 import os
 import re
 import logging
