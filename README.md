@@ -36,7 +36,7 @@
 
 ## 🔄 架构图
 <div align="center">
-  <img src="./asserts/HeartLink.png" width="600"/>
+  <img src="./asserts/HeartLink.png" width="800"/>
 </div>
 
 ## 🎉 更新
