@@ -11,6 +11,7 @@ import soundfile as sf
 import copy
 import pandas as pd
 import altair as alt
+from io import BytesIO
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 from dataclasses import asdict, dataclass
 from lmdeploy import pipeline, GenerationConfig, TurbomindEngineConfig, ChatTemplateConfig
@@ -204,6 +205,11 @@ def main():
                 now_time = time.time()
                 
                 sf.write(output_wav_path+str(now_time)+'.wav', audio, sr)
+
+                wav = BytesIO()
+                sf.write(wav, audio, sr, format="wav")
+                wav.seek(0)
+
                 with open(output_wav_path+str(now_time)+'.wav', "rb") as wav:
                     audio = wav.read()
                 try:
