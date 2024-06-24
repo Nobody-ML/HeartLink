@@ -24,7 +24,11 @@ from TTS.GPT_SoVITS.feature_extractor import cnhubert
 from modelscope.hub.api import HubApi
 
 os.system("pwd")
-os.system("mv /home/xlab-app-center/HeartLink/nltk_data /home/xlab-app-center")
+print("-------------")
+os.system("ls")
+peint("-------------")
+
+os.system("mv /home/xlab-app-center/nltk_data /home/xlab-app-center")
 api = HubApi()
 api.login('3495b435-5eb0-41c8-89eb-254c8c971b4e')
 
@@ -156,7 +160,7 @@ def main():
         })
 
         prompts = llm_prompt()
-        with st.chat_message('robot',avatar='./asserts/logo.jpg'):
+        with st.chat_message('robot',avatar='/home/xlab-app-center/demo/asserts/logo.jpg'):
             message_placeholder = st.empty()
             loading_placeholder = st.empty()
             # border,width,height调圈大小，<div style="display: flex; align-items: center; margin-top: -15px;">加justify-content: center;居中
@@ -201,7 +205,7 @@ def main():
                                         tokenizer=tokenizer, bert_model=bert_model, ssl_model=ssl_model, vq_model=vq_model, hps=hps, t2s_model=t2s_model, max_sec=max_sec,
                                         )
                 
-                output_wav_path = "/home/xlab-app-center/HeartLink/demo/TTS/tts_temp/"
+                output_wav_path = "/home/xlab-app-center/demo/TTS/tts_temp/"
                 now_time = time.time()
                 
                 sf.write(output_wav_path+str(now_time)+'.wav', audio, sr)
