@@ -238,7 +238,7 @@ def main():
                 'content': items,
                 'wav': output_wav_path+str(now_time)+'.wav',
                 'emotions': tmp,
-                'avatar': './asserts/logo.jpg',
+                'avatar': '/home/xlab-app-center/demo/asserts/logo.jpg',
             })
 
             
