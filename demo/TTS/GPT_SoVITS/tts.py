@@ -19,7 +19,7 @@ from .module.mel_processing import spectrogram_torch
 from .my_utils import load_audio
 import soundfile as sf
 
-from .utils import HParams
+from utils import HParams
 # import utils
 import json
 import locale
