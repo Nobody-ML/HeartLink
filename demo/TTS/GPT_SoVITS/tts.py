@@ -1,5 +1,7 @@
 import sys
-sys.path.append('/home/xlab-app-center/HeartLink/demo/TTS/GPT_SoVITS/')
+sys.path.append('/home/xlab-app-center/demo/TTS/GPT_SoVITS/')
+sys.path.append('/home/xlab-app-center/demo/TTS/')
+sys.path.append('/home/xlab-app-center/demo/')
 import os
 import re
 import logging
@@ -35,7 +37,7 @@ hz = 50
 
 def load_language_list(language):
     # with open(f"./i18n/locale/{language}.json", "r", encoding="utf-8") as f:
-    with open(f"/home/xlab-app-center/HeartLink/demo/TTS/i18n/locale/{language}.json", "r", encoding="utf-8") as f:
+    with open(f"demo/TTS/i18n/locale/{language}.json", "r", encoding="utf-8") as f:
         language_list = json.load(f)
     return language_list
 class I18nAuto:
@@ -44,7 +46,7 @@ class I18nAuto:
             language = locale.getdefaultlocale()[
                 0
             ]  # getlocale can't identify the system's language ((None, None))
-        if not os.path.exists(f"/home/xlab-app-center/HeartLink/demo/TTS/i18n/locale/{language}.json"):
+        if not os.path.exists(f"/home/xlab-app-center/demo/TTS/i18n/locale/{language}.json"):
             language = "en_US"
         self.language = language
         self.language_map = load_language_list(language)

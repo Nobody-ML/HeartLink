@@ -22,8 +22,10 @@ from config import prompt_text, prompt_language, text_language, ref_wav_path
 from TTS.GPT_SoVITS.tts import get_tts_wav, load_tts_model
 from TTS.GPT_SoVITS.feature_extractor import cnhubert
 from modelscope.hub.api import HubApi
+
+hubapi = os.getenv("HUBAPI")
 api = HubApi()
-api.login('3495b435-5eb0-41c8-89eb-254c8c971b4e')
+api.login(hubapi)
 
 from modelscope import snapshot_download
 model_dir1 = snapshot_download('NobodyYing/HeartLink_7B_qlora_analyse', cache_dir='/home/xlab-app-center')
@@ -153,7 +155,7 @@ def main():
         })
 
         prompts = llm_prompt()
-        with st.chat_message('robot',avatar='./asserts/logo.jpg'):
+        with st.chat_message('robot',avatar='/home/xlab-app-center/demo/asserts/logo.jpg'):
             message_placeholder = st.empty()
             loading_placeholder = st.empty()
             # border,width,height调圈大小，<div style="display: flex; align-items: center; margin-top: -15px;">加justify-content: center;居中
@@ -198,7 +200,7 @@ def main():
                                         tokenizer=tokenizer, bert_model=bert_model, ssl_model=ssl_model, vq_model=vq_model, hps=hps, t2s_model=t2s_model, max_sec=max_sec,
                                         )
                 
-                output_wav_path = "/home/xlab-app-center/HeartLink/demo/TTS/tts_temp/"
+                output_wav_path = "/home/xlab-app-center/demo/TTS/tts_temp/"
                 now_time = time.time()
                 
                 sf.write(output_wav_path+str(now_time)+'.wav', audio, sr)
@@ -231,7 +233,7 @@ def main():
                 'content': items,
                 'wav': output_wav_path+str(now_time)+'.wav',
                 'emotions': tmp,
-                'avatar': './asserts/logo.jpg',
+                'avatar': '/home/xlab-app-center/demo/asserts/logo.jpg',
             })
 
             
@@ -240,14 +242,15 @@ def main():
                 df = pd.DataFrame(list(tmp.items()), columns=['Emotion', 'Count'])
                 chart = alt.Chart(df).mark_bar(size=50).encode(
                     x=alt.X('Count:Q', title='Count'),
-                    y=alt.Y('Emotion:N', title='Emotion', axis=alt.Axis(labelAngle=0)),  # 设置x轴标签横向显示
+                    y=alt.Y('Emotion:N', title='Emotion', axis=alt.Axis(labelAngle=0)),
                     
                     color=alt.Color('Emotion:N', legend=None)
                 ).properties(
                     width=400,
                     height=400
                 ).interactive()
-                st.altair_chart(chart, use_container_width=True)
+                with st.container(height=400, border=True):
+                    st.altair_chart(chart, use_container_width=True)
 
         torch.cuda.empty_cache()
 
