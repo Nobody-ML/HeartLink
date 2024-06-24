@@ -9,7 +9,7 @@ SYSTEM = os.getenv("SYSTEM")
 IS_TURBOMIND = True
 IS_PYTORCH = False
 
-backend_config = TurbomindEngineConfig(cache_max_entry_count=0.2)
+backend_config = TurbomindEngineConfig(cache_max_entry_count=0.3)
 chat_template_config = ChatTemplateConfig(model_name='internlm2',meta_instruction=SYSTEM)
 
 #######################################################################
