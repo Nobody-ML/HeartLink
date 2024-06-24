@@ -26,5 +26,5 @@ jieba
 LangSegment>=0.2.0
 Faster_Whisper
 wordsegment
-lmdeploy
+lmdeploy==0.4.2
 streamlit==1.35.0
