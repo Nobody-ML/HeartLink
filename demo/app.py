@@ -254,7 +254,8 @@ def main():
                     width=400,
                     height=400
                 ).interactive()
-                st.altair_chart(chart, use_container_width=True)
+                with st.container(height=400, border=True):
+                    st.altair_chart(chart, use_container_width=True)
 
         torch.cuda.empty_cache()
 
