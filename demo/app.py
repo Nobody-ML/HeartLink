@@ -143,9 +143,9 @@ def main():
                 st.markdown(message['content'])
             
             if message.get("wav") is not None:
-                with open(message["wav"], "rb") as wav:
-                    audio = wav.read()
-                st.audio(audio, format="audio/wav")
+                sub_audio_io = message['wav']
+                sub_audio_io.seek(0)
+                st.audio(sub_audio_io, format='audio/wav')
     
     if prompt := st.chat_input('请告诉我你的经历与感受～'):
         with st.chat_message('user',):
@@ -198,25 +198,13 @@ def main():
             message_placeholder.markdown(response)
             
             with st.spinner("正在生成语音，请稍等～"):
-                sr, audio = get_tts_wav(ref_wav_path=ref_wav_path, prompt_text=prompt_text, prompt_language=prompt_language, text=response, text_language=text_language, 
-                                        tokenizer=tokenizer, bert_model=bert_model, ssl_model=ssl_model, vq_model=vq_model, hps=hps, t2s_model=t2s_model, max_sec=max_sec,
-                                        )
-                
-                output_wav_path = "/home/xlab-app-center/demo/TTS/tts_temp/"
-                now_time = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-                
-                sf.write(output_wav_path+str(now_time)+'.wav', audio, sr)
-
-                wav = BytesIO()
-                sf.write(wav, audio, sr, format="wav")
-                wav.seek(0)
-
-                with open(output_wav_path+str(now_time)+'.wav', "rb") as wav:
-                    audio = wav.read()
+                sr, audio_io = get_tts_wav(ref_wav_path=ref_wav_path, prompt_text=prompt_text, prompt_language=prompt_language, text=response, text_language=text_language, 
+                                                tokenizer=tokenizer, bert_model=bert_model, ssl_model=ssl_model, vq_model=vq_model, hps=hps, t2s_model=t2s_model, max_sec=max_sec,
+                                                )
                 try:
-                    st.audio(data=audio, format="audio/wav", autoplay=True)
+                    st.audio(data=audio_io, format="audio/wav", autoplay=True)
                 except:
-                    st.audio(data=audio, format="audio/wav")
+                    st.audio(data=audio_io, format="audio/wav")
 
             emotions = emotion.split(',')
 
@@ -238,7 +226,7 @@ def main():
             st.session_state.messages.append({
                 'role': 'assistant',
                 'content': items,
-                'wav': output_wav_path+str(now_time)+'.wav',
+                'wav': audio_io,
                 'emotions': tmp,
                 'avatar': '/home/xlab-app-center/demo/asserts/logo.jpg',
             })

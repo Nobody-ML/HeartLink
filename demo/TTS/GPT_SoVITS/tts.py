@@ -18,6 +18,7 @@ from .text.cleaner import clean_text
 from .module.mel_processing import spectrogram_torch
 from .my_utils import load_audio
 import soundfile as sf
+import io
 
 from utils import HParams
 # import utils
@@ -356,8 +357,12 @@ def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language,
         if max_audio>1:audio/=max_audio
         audio_opt.append(audio)
         audio_opt.append(zero_wav)
-    return hps.data.sampling_rate, (np.concatenate(audio_opt, 0) * 32768).astype(np.int16)
 
+        audio_io = io.BytesIO()
+        sf.write(audio_io, (np.concatenate(audio_opt, 0) * 32768).astype(np.int16), hps.data.sampling_rate, format='WAV')
+        audio_io.seek(0)
+    return hps.data.sampling_rate, audio_io
+    
 def split(todo_text):
     todo_text = todo_text.replace("……", "。").replace("——", "，")
     if todo_text[-1] not in splits:

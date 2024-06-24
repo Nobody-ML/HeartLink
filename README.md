@@ -102,7 +102,7 @@ lmdeploy chat /root/model/HeartLink  --model-name internlm2
 - 详情请见[微调指南](./finetune_config/xtuner_config/README.md)
 
 ## 📚 应用体验
-- 应用部署在 [OpenXLab 应用中心](https://openxlab.org.cn/apps/detail/Nobody-ML/SoulStar)，可前往体验
+- 应用部署在 [OpenXLab 应用中心](https://openxlab.org.cn/apps/detail/Nobody-ML/HeartLink_7B_qlora_analyse)，可前往体验
 
 ## 🎖️ 致谢
 - [OpenXLab](https://openxlab.org.cn/home)
