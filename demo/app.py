@@ -11,6 +11,7 @@ import soundfile as sf
 import copy
 import pandas as pd
 import altair as alt
+from datetime import datetime
 from io import BytesIO
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 from dataclasses import asdict, dataclass
@@ -202,7 +203,7 @@ def main():
                                         )
                 
                 output_wav_path = "/home/xlab-app-center/demo/TTS/tts_temp/"
-                now_time = time.time()
+                now_time = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
                 
                 sf.write(output_wav_path+str(now_time)+'.wav', audio, sr)
 
