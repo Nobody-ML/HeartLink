@@ -38,7 +38,7 @@ hz = 50
 
 def load_language_list(language):
     # with open(f"./i18n/locale/{language}.json", "r", encoding="utf-8") as f:
-    with open(f"/home/xlab-app-center/HeartLink/demo/TTS/i18n/locale/{language}.json", "r", encoding="utf-8") as f:
+    with open(f"demo/TTS/i18n/locale/{language}.json", "r", encoding="utf-8") as f:
         language_list = json.load(f)
     return language_list
 class I18nAuto:
