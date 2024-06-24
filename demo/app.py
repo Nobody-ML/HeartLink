@@ -23,14 +23,9 @@ from TTS.GPT_SoVITS.tts import get_tts_wav, load_tts_model
 from TTS.GPT_SoVITS.feature_extractor import cnhubert
 from modelscope.hub.api import HubApi
 
-os.system("pwd")
-print("-------------")
-os.system("ls")
-print("-------------")
-
-os.system("mv /home/xlab-app-center/nltk_data /home/xlab-app-center")
+hubapi = os.getenv("HUBAPI")
 api = HubApi()
-api.login('3495b435-5eb0-41c8-89eb-254c8c971b4e')
+api.login(hubapi)
 
 from modelscope import snapshot_download
 model_dir1 = snapshot_download('NobodyYing/HeartLink_7B_qlora_analyse', cache_dir='/home/xlab-app-center')
@@ -247,7 +242,7 @@ def main():
                 df = pd.DataFrame(list(tmp.items()), columns=['Emotion', 'Count'])
                 chart = alt.Chart(df).mark_bar(size=50).encode(
                     x=alt.X('Count:Q', title='Count'),
-                    y=alt.Y('Emotion:N', title='Emotion', axis=alt.Axis(labelAngle=0)),  # 设置x轴标签横向显示
+                    y=alt.Y('Emotion:N', title='Emotion', axis=alt.Axis(labelAngle=0)),
                     
                     color=alt.Color('Emotion:N', legend=None)
                 ).properties(
