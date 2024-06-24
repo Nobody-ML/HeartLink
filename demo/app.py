@@ -26,7 +26,7 @@ from modelscope.hub.api import HubApi
 os.system("pwd")
 print("-------------")
 os.system("ls")
-peint("-------------")
+print("-------------")
 
 os.system("mv /home/xlab-app-center/nltk_data /home/xlab-app-center")
 api = HubApi()
