@@ -250,7 +250,7 @@ def merge_short_text_in_array(texts, threshold):
 
 def get_tts_wav(ref_wav_path, prompt_text, prompt_language, text, text_language, 
                 tokenizer, bert_model, ssl_model, vq_model, hps, t2s_model, max_sec,
-                is_half=is_half, device=device, how_to_cut=i18n("不切"), top_k=20, top_p=0.6, temperature=0.6, ref_free = False):
+                is_half=is_half, device=device, how_to_cut=i18n("凑50字一切"), top_k=20, top_p=0.6, temperature=0.6, ref_free = False):
     if prompt_text is None or len(prompt_text) == 0:
         ref_free = True
     prompt_language = dict_language[i18n(prompt_language)]
@@ -371,7 +371,7 @@ def split(todo_text):
         if todo_text[i_split_head] in splits:
             i_split_head += 1
             todo_texts.append(todo_text[i_split_tail:i_split_head])
-            i_split_tail = i_split
+            i_split_tail = i_split_head
         else:
             i_split_head += 1
     return todo_texts
@@ -460,7 +460,7 @@ def get_first(text):
 @st.cache_resource
 def load_tts_model():
     gpt_path = "/home/xlab-app-center/NobodyYing/GPT_weights_hutao/hutao-e15.ckpt"
-    sovits_path = "/home/xlab-app-center/NobodyYing/SoVITS_weights_hutao/hutao_e25_s1725.pth"
+    sovits_path = "/home/xlab-app-center/NobodyYing/SoVITS_weights_hutao/hutao_e15_s1035.pth"
 
     cnhubert_base_path = "/home/xlab-app-center/NobodyYing/GPT_SoVITS_pretrained_models/chinese-hubert-base"
     bert_path = "/home/xlab-app-center/NobodyYing/GPT_SoVITS_pretrained_models/chinese-roberta-wwm-ext-large"
