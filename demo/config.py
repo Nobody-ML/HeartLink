@@ -62,4 +62,4 @@ chat_template_config = ChatTemplateConfig(model_name='internlm2',meta_instructio
 prompt_text = "胡桃的胡是胡吃海喝的胡，胡桃的桃却不是淘气的淘！嘿嘿…不、不好笑吗？"
 prompt_language = "中文"
 text_language = "中文"
-ref_wav_path = "/home/xlab-app-center/HeartLink/demo/TTS/GPT_SoVITS/cankao2.wav"
+ref_wav_path = "/home/xlab-app-center/demo/TTS/GPT_SoVITS/cankao2.wav"
