@@ -19,11 +19,12 @@
 </div>
 
 ## 📖 目录
-- [HeartLink - 共情大模型](#HeartLink---共情大模型)
+- [HeartLink - 心理共情大模型](#heartlink---心理共情大模型)
+  - [📖 目录](#-目录)
   - [🔄 架构图](#-架构图)
   - [🎉 更新](#-更新)
   - [📝 简介](#-简介)
-  - [🛠️ 快速开始](#%EF%B8%8F-快速开始)
+  - [🛠️ 快速开始](#️-快速开始)
     - [1. 算力要求](#1-算力要求)
     - [2. 基于 transformers 使用模型](#2-基于-transformers-使用模型)
     - [3. 通过网页前端体验 demo](#3-通过网页前端体验-demo)
@@ -31,7 +32,7 @@
   - [🧾 数据构建](#-数据构建)
   - [🧑‍💻 微调指南](#-微调指南)
   - [📚 应用体验](#-应用体验)
-  - [🎖️ 致谢](#%EF%B8%8F-致谢)
+  - [🎖️ 致谢](#️-致谢)
   - [开源许可证](#开源许可证)
 
 ## 🔄 架构图
@@ -48,6 +49,16 @@
 HeartLink 是一个心理共情大模型，通过 `Large Language Model` 在构建的大型共情问答数据集指令微调而来，能在对话过程中感知用户的情绪与此时用户的经历，通过丰富的心理学知识，给予共情回复，达到理解安慰、共情支持用户的目的。在回复中附有 emoji 表情以拉近与用户的距离，让用户在咨询中得到心理上的支持和帮助。
 
 在此基座共情大模型上构建出了心理共情应用，支持语音合成，在每次回复后播放合成语音；同时支持数字人展示（未完善）；此外还有用户情绪图表分析。
+
+<div align="center">
+  <img src="./asserts/HeartLink_digitalhuman.gif" width="800"/>
+  <h3 align="center">HeartLink with Digital Human</h3>
+</div>
+
+<div align="center">
+  <img src="./asserts/HeartLink.gif" width="800"/>
+  <h3 align="center">HeartLink without Digital Human</h3>
+</div>
 
 目前支持模型及微调方式列表如下：
 |         基座模型          |   微调方式   |
