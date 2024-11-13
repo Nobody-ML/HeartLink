@@ -25,8 +25,7 @@ from TTS.GPT_SoVITS.tts import get_tts_wav, load_tts_model
 from TTS.GPT_SoVITS.feature_extractor import cnhubert
 from modelscope.hub.api import HubApi
 
-# hubapi = os.getenv("HUBAPI")
-hubapi = "62acb8c3-2c52-490b-a4f9-0c84b5310bc0"
+hubapi = os.getenv("HUBAPI")
 api = HubApi()
 api.login(hubapi)
 
